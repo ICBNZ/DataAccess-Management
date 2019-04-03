@@ -1,0 +1,17 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `type_name_by_name`(IN type_name VARCHAR(45), name VARCHAR(45))
+BEGIN
+	SELECT * 
+	FROM data_project1.Article a 
+	WHERE a.type_name = type_name AND (a.name = name)
+	or a.type_name LIKE CONCAT('%', type_name , '%') 
+    AND (a.name LIKE CONCAT('%', name , '%'));
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `type_name_by_subject`(IN type_name VARCHAR(45), subject_name VARCHAR(45))
+BEGIN
+	SELECT * 
+	FROM data_project1.Article a 
+	WHERE a.type_name = type_name AND (a.subject_name = subject_name)
+	or a.type_name LIKE CONCAT('%', type_name , '%') 
+    AND (a.subject_name LIKE CONCAT('%', subject_name , '%'));
+END
